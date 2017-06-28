@@ -7,15 +7,47 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 dash-block grey">
-          hello
+          <div class="patient-block">
+            <p>PATIENT</p>
+            </hr>
+            <form>
+              <div class="form-group">
+                <input type="text" class="form-control" id="name" placeholder="Name"/>
+                <input type="text" class="form-control" id="phone_number" placeholder="Phone Number"/>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </div>
+            </form>
+          </div>
         </div>
         <div class="col-md-6 dash-block">
-          hello 2
+          <div class="patient-block">
+            <p>DOCTOR</p>
+            </hr>
+            <form>
+              <div class="form-group">
+                <input type="text" class="form-control" id="name" placeholder="Name"/>
+                <input type="text" class="form-control" id="phone_number" placeholder="Phone Number"/>
+                <input type="text" class="form-control" id="specialization" placeholder="Specialization"/>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6 dash-block">
-          hello 3
+          <div class="patient-block">
+            <p>APPOINTMENT</p>
+            </hr>
+            <form>
+              <div class="form-group">
+                <%= select_tag :doctors, options_for_select(@doctors.map {|doctor| [doctor[:name], doctor[:id]]}, class: ".dropdown-menu")%>
+                <%= select_tag :patients, options_for_select(@patients.map {|patient| [patient[:name], patient[:id]]})%>
+                <input type="textarea" class="form-control" id="diseases" placeholder="Diseases"/>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </div>
+            </form>
+          </div>
         </div>
         <div class="col-md-6 dash-block grey">
           hello 4
