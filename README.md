@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+VideKen-client is a DashBoard for creating Patient users, Physician users, Appointments between them and Listing down all the Appointments made on a Single Page. The app is built on Ruby-on-Rails. Other Specification for the app are as -
 
-Things you may want to cover:
+Ruby version => 2.3.1  
+Rails version => 5.1.2
 
-* Ruby version
+Since, this is just a webapp, it consumes an API (VideoKen-server) to get the data. The Url for VideoKen-server is - https://polar-peak-77827.herokuapp.com/.  
+  
+The other documentation for the server can be read at its github page - https://github.com/utkarshrai003/VideoKen-server
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This web app is hosted on Heroku - https://thawing-eyrie-25010.herokuapp.com/
