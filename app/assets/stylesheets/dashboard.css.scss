@@ -56,9 +56,14 @@
 }
 
 #flash-message {
-  height: 30px;
+  height: 50px;
   position: relative;
   margin-top: 0px;
-  background-color: red;
+  background-color: #B80000;
   text-align: center;
+}
+
+.flash-text {
+  font-weight: bolder;
+  color: white;
 }
