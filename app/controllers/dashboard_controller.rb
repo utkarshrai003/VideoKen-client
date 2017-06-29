@@ -13,9 +13,9 @@ class DashboardController < ApplicationController
   def create_user
     response = ApiCall.new('api/v1/users', :post, patient_params).make_call
     if response["error"]
-      flash["error"] = response["error"]
+      flash["notice"] = response["error"].first
     else
-      flash["error"] = "Created successfully"
+      flash["notice"] = "Created successfully"
     end
     redirect_to('/')
   end
