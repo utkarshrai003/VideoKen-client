@@ -17,7 +17,7 @@ class DashboardController < ApplicationController
     else
       flash["error"] = "Created successfully"
     end
-    redirect_to dashboard_path
+    redirect_to('/')
   end
 
   # Endpoint to create an appointment between patient and doctor
@@ -29,7 +29,7 @@ class DashboardController < ApplicationController
     else
       flash["error"] = "Created successfully"
     end
-    redirect_to dashboard_path
+    redirect_to('/')
   end
 
   private
