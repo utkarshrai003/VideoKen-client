@@ -10,52 +10,79 @@
       <% end %>
       <div class="row">
         <div class="col-md-6 dash-block grey">
-          <div class="patient-block">
-            <p>PATIENT</p>
+          <div class="container-block">
+            <p class="heading">PATIENT</p>
+            <hr class="seperator" />
             </hr>
             <%= form_tag(create_user_path, method: :post) do %>
               <div class="form-group">
-                <input type="text" class="form-control" name="name" placeholder="Name" />
-                <input type="email" class="form-control" name="email" placeholder="Email" />
+                <input type="text" class="form-control" name="name" placeholder="Name" /></br>
+                <input type="email" class="form-control" name="email" placeholder="Email" /></br>
                 <input type="text" class="form-control" name="number" placeholder="Phone Number" />
                 <input type="hidden" class="form-control" name="role" value="patient" />
               </div>
-              <button type="submit" class="btn btn-default">Submit</button>
+              <button type="submit" class="btn btn-warning btn-sm submit">Submit</button>
             <% end %>
           </div>
         </div>
         <div class="col-md-6 dash-block">
-          <div class="patient-block">
-            <p>DOCTOR</p>
+          <div class="container-block">
+            <p class="heading">DOCTOR</p>
+            <hr class="seperator" />
             </hr>
-            <form>
+            <%= form_tag(create_user_path, method: :post) do %>
               <div class="form-group">
-                <input type="text" class="form-control" id="name" placeholder="Name"/>
-                <input type="text" class="form-control" id="phone_number" placeholder="Phone Number"/>
-                <input type="text" class="form-control" id="specialization" placeholder="Specialization"/>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <input type="text" class="form-control" name="name" placeholder="Name"/></br>
+                <input type="email" class="form-control" name="email" placeholder="Email" /></br>
+                <input type="text" class="form-control" name="specialization" placeholder="Specialization"/>
+                <input type="hidden" class="form-control" name="role" value="physician" />
               </div>
-            </form>
+              <button type="submit" class="btn btn-warning btn-sm submit">Submit</button>
+            <% end %>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6 dash-block">
-          <div class="patient-block">
-            <p>APPOINTMENT</p>
+          <div class="container-block">
+            <p class="heading">APPOINTMENT</p>
+            <hr class="seperator" />
             </hr>
-            <form>
-              <div class="form-group">
-                <%= select_tag :doctors, options_for_select(@doctors.map {|doctor| [doctor[:name], doctor[:id]]}, class: ".dropdown-menu")%>
-                <%= select_tag :patients, options_for_select(@patients.map {|patient| [patient[:name], patient[:id]]})%>
-                <input type="textarea" class="form-control" id="diseases" placeholder="Diseases"/>
-                <button type="submit" class="btn btn-default">Submit</button>
+            <%= form_tag(create_appointment_path, method: :post) do %>
+              <div class="">
+                <%= select_tag(:physician_id, options_for_select(@doctors["data"].map {|doctor| [doctor["name"], doctor["id"]]}), {class:"form-control"}) %></br>
+                <%= select_tag :patient_id, options_for_select(@patients["data"].map {|patient| [patient["name"], patient["id"]]}), {class:"form-control"} %></br>
+                <input type="textarea" class="form-control" name="diseases" placeholder="Diseases"/></br>
               </div>
-            </form>
+              <button type="submit" class="btn btn-warning btn-sm submit">Submit</button>
+            <% end %>
           </div>
         </div>
         <div class="col-md-6 dash-block grey">
-          hello 4
+          <div class="container-block-extra-wide">
+            <p class="heading">VIEW APPOINTMENTS</p>
+            <hr class="seperator" />
+            <div class="table-wrapper">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Doctor</th>
+                    <th>Patient</th>
+                    <th>Diseases</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @appointments["data"].each do |appointment| %>
+                    <tr>
+                      <td>Dr. <%= appointment["physician"]["name"] %></td>
+                      <td><%= appointment["patient"]["name"] %></td>
+                      <td><%= appointment["diseases"] %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </table>
+          </div>
         </div>
       </div>
     </div>
