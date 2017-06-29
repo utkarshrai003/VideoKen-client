@@ -1,11 +1,15 @@
 class DashboardController < ApplicationController
 
+  # Endpoint to display DashBoard for VideoKen-client
+  # Fetches relevant data using ApiCall to the VideoKem-server
   def show
     @patients = ApiCall.new('api/v1/patients', :get).make_call
     @doctors = ApiCall.new('api/v1/physicians', :get).make_call
     @appointments = ApiCall.new('api/v1/appointments', :get).make_call
   end
 
+  # Endpoint to create a user(patient/doctor)
+  # Makes a call to VideKen-server with parameters
   def create_user
     response = ApiCall.new('api/v1/users', :post, patient_params).make_call
     if response["error"]
@@ -16,6 +20,8 @@ class DashboardController < ApplicationController
     redirect_to dashboard_path
   end
 
+  # Endpoint to create an appointment between patient and doctor
+  # Makes a call to VideKen-server with parameters
   def create_appointment
     response = ApiCall.new('api/v1/appointments', :post, appointment_params).make_call
     if response["error"]
