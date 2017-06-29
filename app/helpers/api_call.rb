@@ -1,6 +1,5 @@
 class ApiCall
-
-  def initialize(end_url, parameters, method)
+  def initialize(end_url, method, parameters=nil)
     @url = ENV["VIDEO_KEN_API_URL"] + "#{end_url}"
     @params = parameters
     @method = method
