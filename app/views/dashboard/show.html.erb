@@ -10,13 +10,15 @@
           <div class="patient-block">
             <p>PATIENT</p>
             </hr>
-            <form>
+            <%= form_tag(create_patient_user_path, method: :post) do %>
               <div class="form-group">
-                <input type="text" class="form-control" id="name" placeholder="Name"/>
-                <input type="text" class="form-control" id="phone_number" placeholder="Phone Number"/>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <input type="text" class="form-control" name="name" placeholder="Name" />
+                <input type="email" class="form-control" name="email" placeholder="Email" />
+                <input type="text" class="form-control" name="phone number" placeholder="Phone Number" />
+                <input type="hidden" class="form-control" name="role" value="patient" />
               </div>
-            </form>
+              <button type="submit" class="btn btn-default">Submit</button>
+            <% end %>
           </div>
         </div>
         <div class="col-md-6 dash-block">
