@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
 
   # Endpoint to display DashBoard for VideoKen-client
-  # Fetches relevant data using ApiCall to the VideoKem-server
+  # Fetches relevant data by making an api call to VideoKem-server
   def show
     @patients = ApiCall.new('api/v1/patients', :get).make_call
     @doctors = ApiCall.new('api/v1/physicians', :get).make_call
@@ -14,24 +14,20 @@ class DashboardController < ApplicationController
   # Makes a call to VideKen-server with parameters
   def create_user
     response = ApiCall.new('api/v1/users', :post, patient_params).make_call
-    if response["error"]
-      flash["notice"] = response["error"].first
-    else
-      flash["notice"] = "Created successfully"
-    end
+    flash["notice"] = response["error"] ? response["error"].first : "User created successfully."
     redirect_to('/')
+  rescue
+    render :template => "errors/server_unavailable"
   end
 
   # Endpoint to create an appointment between patient and doctor
   # Makes a call to VideKen-server with parameters
   def create_appointment
     response = ApiCall.new('api/v1/appointments', :post, appointment_params).make_call
-    if response["error"]
-      flash["error"] = response["error"]
-    else
-      flash["error"] = "Created successfully"
-    end
+    flash["notice"] = response["error"] ? response["error"].first : "Appointment created successfully."
     redirect_to('/')
+  rescue
+    render :template => "errors/server_unavailable"
   end
 
   private
