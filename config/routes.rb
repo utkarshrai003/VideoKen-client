@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get '/' => 'dashboard#show'
   post '/create_user' => 'dashboard#create_user'
   post '/create_appointment' => 'dashboard#create_appointment'
+  get '*path' => redirect('/')
 end
