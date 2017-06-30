@@ -14,7 +14,7 @@ class DashboardController < ApplicationController
   # Makes a call to VideKen-server with parameters
   def create_user
     response = ApiCall.new('api/v1/users', :post, patient_params).make_call
-    flash["notice"] = response["error"] ? response["error"].first : "User created successfully."
+    flash["notice"] = response["error"] ? response["error"] : "User created successfully."
     redirect_to('/')
   rescue
     render :template => "errors/server_unavailable"
@@ -24,7 +24,7 @@ class DashboardController < ApplicationController
   # Makes a call to VideKen-server with parameters
   def create_appointment
     response = ApiCall.new('api/v1/appointments', :post, appointment_params).make_call
-    flash["notice"] = response["error"] ? response["error"].first : "Appointment created successfully."
+    flash["notice"] = response["error"] ? response["error"] : "Appointment created successfully."
     redirect_to('/')
   rescue
     render :template => "errors/server_unavailable"
