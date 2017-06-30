@@ -62,8 +62,8 @@
             </hr>
             <%= form_tag(create_appointment_path, method: :post) do %>
               <div class="">
-                <%= select_tag(:physician_id, options_for_select(@doctors["data"].map {|doctor| [doctor["name"], doctor["id"]]}), { class:"form-control"} ) %></br>
-                <%= select_tag :patient_id, options_for_select(@patients["data"].map {|patient| [patient["name"], patient["id"]]}), {class:"form-control"} %></br>
+                <%= select_tag(:physician_id, options_for_select(@doctors["data"].map {|doctor| [doctor["name"], doctor["id"]]}), prompt: "----Select a Doctor here----", required: true, class:"form-control" ) %></br>
+                <%= select_tag(:patient_id, options_for_select(@patients["data"].map {|patient| [patient["name"], patient["id"]]}), prompt: "----Select a Patient here----", required: true, class:"form-control" ) %></br>
                 <input type="textarea" class="form-control" name="diseases" placeholder="Diseases" required /></br>
               </div>
               <button type="submit" class="btn btn-warning btn-sm submit">Submit</button>
