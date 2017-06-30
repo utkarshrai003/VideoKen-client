@@ -6,6 +6,8 @@ class DashboardController < ApplicationController
     @patients = ApiCall.new('api/v1/patients', :get).make_call
     @doctors = ApiCall.new('api/v1/physicians', :get).make_call
     @appointments = ApiCall.new('api/v1/appointments', :get).make_call
+  rescue
+    render :template => "errors/server_unavailable"
   end
 
   # Endpoint to create a user(patient/doctor)
