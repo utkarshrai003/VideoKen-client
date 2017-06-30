@@ -25,8 +25,8 @@
             </hr>
             <%= form_tag(create_user_path, method: :post) do %>
               <div class="form-group">
-                <input type="text" class="form-control" name="name" placeholder="Name" /></br>
-                <input type="email" class="form-control" name="email" placeholder="Email" /></br>
+                <input type="text" class="form-control" name="name" placeholder="Name" required /></br>
+                <input type="email" class="form-control" name="email" placeholder="Email" required/></br>
                 <input type="text" class="form-control" name="number" placeholder="Phone Number" />
                 <input type="hidden" class="form-control" name="role" value="patient" />
               </div>
@@ -41,8 +41,8 @@
             </hr>
             <%= form_tag(create_user_path, method: :post) do %>
               <div class="form-group">
-                <input type="text" class="form-control" name="name" placeholder="Name"/></br>
-                <input type="email" class="form-control" name="email" placeholder="Email" /></br>
+                <input type="text" class="form-control" name="name" placeholder="Name" required /></br>
+                <input type="email" class="form-control" name="email" placeholder="Email" required /></br>
                 <input type="text" class="form-control" name="specialization" placeholder="Specialization"/>
                 <input type="hidden" class="form-control" name="role" value="physician" />
               </div>
@@ -59,9 +59,9 @@
             </hr>
             <%= form_tag(create_appointment_path, method: :post) do %>
               <div class="">
-                <%= select_tag(:physician_id, options_for_select(@doctors["data"].map {|doctor| [doctor["name"], doctor["id"]]}), {class:"form-control"}) %></br>
+                <%= select_tag(:physician_id, options_for_select(@doctors["data"].map {|doctor| [doctor["name"], doctor["id"]]}), { class:"form-control"} ) %></br>
                 <%= select_tag :patient_id, options_for_select(@patients["data"].map {|patient| [patient["name"], patient["id"]]}), {class:"form-control"} %></br>
-                <input type="textarea" class="form-control" name="diseases" placeholder="Diseases"/></br>
+                <input type="textarea" class="form-control" name="diseases" placeholder="Diseases" required /></br>
               </div>
               <button type="submit" class="btn btn-warning btn-sm submit">Submit</button>
             <% end %>
